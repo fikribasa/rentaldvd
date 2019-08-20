@@ -53,4 +53,26 @@ module.exports = {
       })
       .catch (error => console.log (error));
   },
+
+  deleteMovies:(req,res) => {
+      const id = req.params.id;
+      modelMovies
+      .deleteMovies(id)
+      .then(response => {
+        formResponse.success (res, 200, response);
+        })
+        .catch (error => console.log (error));
+    },
+
+    updateMovies:(req,res) => {
+    const data = {title: req.body.title, genre: req.body.genre, country: req.body.country};
+    modelMovies
+    .updateMovies(data)
+    .then(response => {
+        formResponse.success (res, 200, response);
+        })
+        .catch (error => console.log (error));
+    }
+
+
 };

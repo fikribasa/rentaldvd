@@ -58,4 +58,32 @@ module.exports = {
       );
     });
   },
+  deleteMovies: id => {
+      return new Promise ((resolve,reject) =>{
+          db.query('DELETE FROM movie WHERE id=?',
+          [id],
+          (error,response) => {
+            if (!error) {
+                resolve (response);
+              } else {
+                reject (error);
+              }
+          });
+      });
+  },
+
+  updateMovies: body => {
+    return new Promise ((resolve, reject) => {
+      db.query (`UPDATE movie SET title='${body.title}', genre='${body.genre}', country='${body.country}' WHERE id=?`, 
+      [body.title, body.genre, body.country, body.id], 
+      (error, response) => {
+        if (!error) {
+          resolve (response);
+        } else {
+          reject (error);
+        }
+      });
+    });
+  },
+
 };
