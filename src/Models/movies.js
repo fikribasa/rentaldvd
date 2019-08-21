@@ -72,10 +72,12 @@ module.exports = {
       });
   },
 
-  updateMovies: body => {
+  updateMovies: req  => {
     return new Promise ((resolve, reject) => {
-      db.query (`UPDATE movie SET title='${body.title}', genre='${body.genre}', country='${body.country}' WHERE id=?`, 
-      [body.title, body.genre, body.country, body.id], 
+      
+      db.query (`UPDATE movie SET ? WHERE id=?`, 
+      [req.body, req.id], 
+      
       (error, response) => {
         if (!error) {
           resolve (response);

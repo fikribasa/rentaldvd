@@ -65,7 +65,7 @@ module.exports = {
     },
 
     updateMovies:(req,res) => {
-    const data = {title: req.body.title, genre: req.body.genre, country: req.body.country};
+    const data = {body: req.body, id:req.params.id };
     modelMovies
     .updateMovies(data)
     .then(response => {
