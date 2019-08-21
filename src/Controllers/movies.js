@@ -72,7 +72,37 @@ module.exports = {
         formResponse.success (res, 200, response);
         })
         .catch (error => console.log (error));
-    }
+    },
+
+    sortGenre:(req,res) => {
+      const genre=req.params.genre;
+      modelMovies
+      .sortByGenre(genre)
+      .then(response => {
+        formResponse.success (res,200,response);
+      })
+      .catch (error => console.log(error));
+    },
+
+    sortCountry:(req,res)=>{
+      const country=req.params.country;
+      modelMovies
+      .sortByCountry(country)
+      .then(response => {
+        formResponse.success(res,200,response);
+      })
+      .catch(error=> console.log(error));
+    },
+
+    paginationGenre:(req,res)=> {
+      const page = req.params.page; 
+    modelMovies
+    .paginationbyGenre(page)
+    .then(response => {
+      formResponse.success (res, 200, response);
+      })
+      .catch (error => console.log (error));
+    },  
 
 
 };

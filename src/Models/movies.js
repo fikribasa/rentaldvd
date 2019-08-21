@@ -74,7 +74,6 @@ module.exports = {
 
   updateMovies: req  => {
     return new Promise ((resolve, reject) => {
-      
       db.query (`UPDATE movie SET ? WHERE id=?`, 
       [req.body, req.id], 
       
@@ -87,5 +86,44 @@ module.exports = {
       });
     });
   },
+
+  sortByGenre: genre => {
+    return new Promise((resolve,reject) => {
+      db.query('SELECT * FROM movie WHERE genre=?',[genre], (error,response) => {
+        if (!error) {
+          resolve (response);
+        } else {
+          reject (error);
+        }
+      })
+    })
+  },
+
+  sortByCountry: country => {
+    return new Promise((resolve,reject) => {
+      db.query('SELECT * FROM movie WHERE country=?',[country],(error,response) => {
+        if (!error) {
+          resolve (response);
+        } else {
+          reject (error);
+        }
+      })
+    })
+  },
+
+  paginationbyGenre:page => {
+    //const limit = 4;
+    //const page = req.params.page;
+    console.log(page);
+    return new Promise ((resolve, reject) =>{
+      db.query('SELECT * FROM movie LIMIT ?, 5',[page],(error,response) => {
+        if (!error) {
+          resolve (response);
+        } else {
+          reject (error);
+        }
+      })
+    })
+  }
 
 };
