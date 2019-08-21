@@ -1,5 +1,5 @@
-const modelMovies = require ('../Models/movies');
-const formResponse = require ('../Helpers/formResponse');
+const modelMovies = require("../Models/movies");
+const formResponse = require("../Helpers/formResponse");
 module.exports = {
   // getAllBook: (req, res) => {
   //   modelBook.getAllBook ((error, response) => {
@@ -16,29 +16,29 @@ module.exports = {
   // },
   getAllMoviesPromise: (req, res) => {
     modelMovies
-      .getAllMoviesPromise ()
-      .then (response => {
-        formResponse.success (res, 200, response);
+      .getAllMoviesPromise()
+      .then(response => {
+        formResponse.success(res, 200, response);
       }) //resolve
-      .catch (error => console.log (error)); //reject
+      .catch(error => console.log(error)); //reject
   },
   getMoviesByTitle: (req, res) => {
     const title = req.params.title;
     modelMovies
-      .getMoviesByTitle (title)
-      .then (response => {
-        formResponse.success (res, 200, response);
+      .getMoviesByTitle(title)
+      .then(response => {
+        formResponse.success(res, 200, response);
       })
-      .catch (error => console.log (error));
+      .catch(error => console.log(error));
   },
   getMoviesById: (req, res) => {
     const id = req.params.id;
     modelMovies
-      .getMoviesById (id)
-      .then (response => {
-        formResponse.success (res, 200, response);
+      .getMoviesById(id)
+      .then(response => {
+        formResponse.success(res, 200, response);
       })
-      .catch (error => console.log (error));
+      .catch(error => console.log(error));
   },
   postMovies: (req, res) => {
     const reqBody = {
@@ -47,62 +47,60 @@ module.exports = {
       country: req.body.country
     };
     modelMovies
-      .postMovies (reqBody)
-      .then (response => {
-        formResponse.success (res, 200, response);
+      .postMovies(reqBody)
+      .then(response => {
+        formResponse.success(res, 200, response);
       })
-      .catch (error => console.log (error));
+      .catch(error => console.log(error));
   },
 
-  deleteMovies:(req,res) => {
-      const id = req.params.id;
-      modelMovies
+  deleteMovies: (req, res) => {
+    const id = req.params.id;
+    modelMovies
       .deleteMovies(id)
       .then(response => {
-        formResponse.success (res, 200, response);
-        })
-        .catch (error => console.log (error));
-    },
+        formResponse.success(res, 200, response);
+      })
+      .catch(error => console.log(error));
+  },
 
-    updateMovies:(req,res) => {
-    const data = {body: req.body, id:req.params.id };
+  updateMovies: (req, res) => {
+    const data = { body: req.body, id: req.params.id };
     modelMovies
-    .updateMovies(data)
-    .then(response => {
-        formResponse.success (res, 200, response);
-        })
-        .catch (error => console.log (error));
-    },
+      .updateMovies(data)
+      .then(response => {
+        formResponse.success(res, 200, response);
+      })
+      .catch(error => console.log(error));
+  },
 
-    sortGenre:(req,res) => {
-      const genre=req.params.genre;
-      modelMovies
+  sortGenre: (req, res) => {
+    const genre = req.params.genre;
+    modelMovies
       .sortByGenre(genre)
       .then(response => {
-        formResponse.success (res,200,response);
+        formResponse.success(res, 200, response);
       })
-      .catch (error => console.log(error));
-    },
+      .catch(error => console.log(error));
+  },
 
-    sortCountry:(req,res)=>{
-      const country=req.params.country;
-      modelMovies
+  sortCountry: (req, res) => {
+    const country = req.params.country;
+    modelMovies
       .sortByCountry(country)
       .then(response => {
-        formResponse.success(res,200,response);
+        formResponse.success(res, 200, response);
       })
-      .catch(error=> console.log(error));
-    },
+      .catch(error => console.log(error));
+  },
 
-    paginationShow:(req,res)=> {
-      const page = req.params.page; 
+  paginationShow: (req, res) => {
+    const page = req.params.page;
     modelMovies
-    .paginationShow(page)
-    .then(response => {
-      formResponse.success (res, 200, response);
+      .paginationShow(page)
+      .then(response => {
+        formResponse.success(res, 200, response);
       })
-      .catch (error => console.log (error));
-    },  
-
-
+      .catch(error => console.log(error));
+  }
 };
