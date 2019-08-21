@@ -111,12 +111,10 @@ module.exports = {
     })
   },
 
-  paginationbyGenre:page => {
-    //const limit = 4;
-    //const page = req.params.page;
-    console.log(page);
+  paginationShow: page => {
+    const limit = 4;
     return new Promise ((resolve, reject) =>{
-      db.query('SELECT * FROM movie LIMIT ?, 5',[page],(error,response) => {
+      db.query('SELECT * FROM `movie` LIMIT ?,?',[(page-1)*limit,limit],(error,response) => {
         if (!error) {
           resolve (response);
         } else {

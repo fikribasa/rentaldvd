@@ -94,10 +94,10 @@ module.exports = {
       .catch(error=> console.log(error));
     },
 
-    paginationGenre:(req,res)=> {
+    paginationShow:(req,res)=> {
       const page = req.params.page; 
     modelMovies
-    .paginationbyGenre(page)
+    .paginationShow(page)
     .then(response => {
       formResponse.success (res, 200, response);
       })

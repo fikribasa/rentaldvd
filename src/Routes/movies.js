@@ -10,7 +10,7 @@ router.get ('/id/:id', movie.getMoviesById);
 router.post ('/', movie.postMovies);
 router.delete('/:id',movie.deleteMovies);
 router.patch('/:id', movie.updateMovies);
-router.get ('/page/:page',movie.paginationGenre);
+router.get ('/page/:page',movie.paginationShow);
 router.get('/genre/:genre',movie.sortGenre);
 router.get('/country/:country',movie.sortCountry);
 
