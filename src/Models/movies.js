@@ -113,8 +113,9 @@ module.exports = {
 
   paginationShow: page => {
     const limit = 4;
+    const start = (page-1)*limit;
     return new Promise ((resolve, reject) =>{
-      db.query('SELECT * FROM `movie` LIMIT ?,?',[(page-1)*limit,limit],(error,response) => {
+      db.query('SELECT * FROM `movie` LIMIT ?,?',[start,limit],(error,response) => {
         if (!error) {
           resolve (response);
         } else {
